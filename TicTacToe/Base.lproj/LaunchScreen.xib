@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="X85-Xq-Dge">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="drt-2l-FEg">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </imageView>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ugH-kF-7Gf">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="9Lo-x6-4uZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Skf-lq-myW">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="g5i-at-mYp">
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <vibrancyEffect>
+                                    <blurEffect style="light"/>
+                                </vibrancyEffect>
+                            </visualEffectView>
+                        </subviews>
+                    </view>
+                    <blurEffect style="light"/>
+                </visualEffectView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="drt-2l-FEg" secondAttribute="centerX" id="04k-Lo-Eas"/>
+                <constraint firstItem="ugH-kF-7Gf" firstAttribute="width" secondItem="X85-Xq-Dge" secondAttribute="width" id="30F-Pd-Lg3"/>
+                <constraint firstAttribute="centerY" secondItem="drt-2l-FEg" secondAttribute="centerY" id="NAy-gp-JiW"/>
+                <constraint firstItem="drt-2l-FEg" firstAttribute="height" secondItem="X85-Xq-Dge" secondAttribute="height" id="Qjz-8T-JRh"/>
+                <constraint firstAttribute="centerY" secondItem="ugH-kF-7Gf" secondAttribute="centerY" id="ZfO-eY-eGp"/>
+                <constraint firstAttribute="centerX" secondItem="ugH-kF-7Gf" secondAttribute="centerX" id="b1C-m4-b8V"/>
+                <constraint firstItem="ugH-kF-7Gf" firstAttribute="height" secondItem="X85-Xq-Dge" secondAttribute="height" id="eF1-hO-yT8"/>
+                <constraint firstItem="drt-2l-FEg" firstAttribute="width" secondItem="X85-Xq-Dge" secondAttribute="width" id="zrQ-Ei-2Av"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="background" width="1936" height="2592"/>
+    </resources>
+</document>
