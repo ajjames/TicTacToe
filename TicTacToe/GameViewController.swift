@@ -14,10 +14,12 @@ class GameViewController: UIViewController
     @IBOutlet var spaces: [BoardSpaceView]!
     @IBOutlet var topResetView: UIView!
     @IBOutlet var bottomResetView: UIView!
+    @IBOutlet var backgroundImageView: UIImageView!
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        backgroundImageView.addBackgroundParallax(100.0)
     }
 
     override func viewWillAppear(animated: Bool)

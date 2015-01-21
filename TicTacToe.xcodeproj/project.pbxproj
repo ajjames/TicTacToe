@@ -16,6 +16,7 @@
 		437C11FD1A6B462A00E58F19 /* BoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437C11FC1A6B462A00E58F19 /* BoardTests.swift */; };
 		437C12081A6B464200E58F19 /* TicTacToeGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437C12071A6B464200E58F19 /* TicTacToeGame.swift */; };
 		43888ADB1A6B9C0B000C5225 /* BoardSpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43888ADA1A6B9C0B000C5225 /* BoardSpaceView.swift */; };
+		438AAD641A6F286B001CEBB3 /* Parallax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438AAD631A6F286B001CEBB3 /* Parallax.swift */; };
 		43D87F991A6C5035006D9CA0 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D87F981A6C5035006D9CA0 /* Enums.swift */; };
 		43D87F9B1A6C506D006D9CA0 /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D87F9A1A6C506D006D9CA0 /* Space.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,7 @@
 		437C11FC1A6B462A00E58F19 /* BoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTests.swift; sourceTree = "<group>"; };
 		437C12071A6B464200E58F19 /* TicTacToeGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicTacToeGame.swift; sourceTree = "<group>"; };
 		43888ADA1A6B9C0B000C5225 /* BoardSpaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardSpaceView.swift; sourceTree = "<group>"; };
+		438AAD631A6F286B001CEBB3 /* Parallax.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parallax.swift; sourceTree = "<group>"; };
 		43D87F981A6C5035006D9CA0 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		43D87F9A1A6C506D006D9CA0 /* Space.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Space.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,13 +89,14 @@
 		437C11E31A6B462A00E58F19 /* TicTacToe */ = {
 			isa = PBXGroup;
 			children = (
+				438AAD651A6F287D001CEBB3 /* Helpers */,
 				437C12061A6B463100E58F19 /* Model */,
 				437C11E61A6B462A00E58F19 /* AppDelegate.swift */,
 				437C11E81A6B462A00E58F19 /* GameViewController.swift */,
 				43888ADA1A6B9C0B000C5225 /* BoardSpaceView.swift */,
 				437C11EA1A6B462A00E58F19 /* Main.storyboard */,
-				437C11ED1A6B462A00E58F19 /* Images.xcassets */,
 				437C11EF1A6B462A00E58F19 /* LaunchScreen.xib */,
+				437C11ED1A6B462A00E58F19 /* Images.xcassets */,
 				437C11E41A6B462A00E58F19 /* Supporting Files */,
 			);
 			path = TicTacToe;
@@ -130,9 +133,17 @@
 				437C12071A6B464200E58F19 /* TicTacToeGame.swift */,
 				43D87F981A6C5035006D9CA0 /* Enums.swift */,
 				43D87F9A1A6C506D006D9CA0 /* Space.swift */,
-				430111231A6C97CD00987E52 /* Animation.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		438AAD651A6F287D001CEBB3 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				438AAD631A6F286B001CEBB3 /* Parallax.swift */,
+				430111231A6C97CD00987E52 /* Animation.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +252,7 @@
 				43D87F991A6C5035006D9CA0 /* Enums.swift in Sources */,
 				43888ADB1A6B9C0B000C5225 /* BoardSpaceView.swift in Sources */,
 				430111241A6C97CD00987E52 /* Animation.swift in Sources */,
+				438AAD641A6F286B001CEBB3 /* Parallax.swift in Sources */,
 				437C11E71A6B462A00E58F19 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,6 +381,7 @@
 				INFOPLIST_FILE = TicTacToe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -379,6 +392,7 @@
 				INFOPLIST_FILE = TicTacToe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

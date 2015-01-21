@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="WME-Uj-vv3">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <rect key="frame" x="-50" y="-50" width="420" height="580"/>
                             </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pwm-Uw-VwY">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
@@ -208,15 +208,16 @@
                             <constraint firstAttribute="centerX" secondItem="pwm-Uw-VwY" secondAttribute="centerX" id="66n-vK-TxW"/>
                             <constraint firstAttribute="centerY" secondItem="WME-Uj-vv3" secondAttribute="centerY" id="GZK-Av-3Be"/>
                             <constraint firstItem="pwm-Uw-VwY" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="T3h-Zg-DZN"/>
-                            <constraint firstItem="WME-Uj-vv3" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="TiK-QR-SJO"/>
+                            <constraint firstItem="WME-Uj-vv3" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" constant="100" id="TiK-QR-SJO"/>
                             <constraint firstItem="pwm-Uw-VwY" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="hpV-eQ-nDY"/>
-                            <constraint firstItem="WME-Uj-vv3" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="vRU-6B-i8S"/>
+                            <constraint firstItem="WME-Uj-vv3" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" constant="100" id="vRU-6B-i8S"/>
                             <constraint firstAttribute="height" secondItem="1Mv-e1-EO7" secondAttribute="height" priority="750" id="xY8-zu-elP"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="backgroundImageView" destination="WME-Uj-vv3" id="GH1-DQ-5aa"/>
                         <outlet property="bottomResetView" destination="uEM-A4-VfN" id="Ema-77-24T"/>
                         <outlet property="topResetView" destination="jDS-dm-WgQ" id="5sd-y7-ftq"/>
                         <outletCollection property="spaces" destination="2cD-ng-A40" collectionClass="NSMutableArray" id="3ug-q2-48l"/>
@@ -232,7 +233,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="401" y="193"/>
+            <point key="canvasLocation" x="195" y="93"/>
         </scene>
     </scenes>
     <resources>
