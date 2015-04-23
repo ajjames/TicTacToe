@@ -10,18 +10,17 @@ import UIKit
 
 class BoardSpaceView: UIView
 {
+    weak var delegate: BoardSpaceViewDelegate!
     var tapGesture: UITapGestureRecognizer!
-    weak var game: TicTacToeGame?
     let backColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
     let markerColor = UIColor.whiteColor()
-    var checkForWinner: ()->() = {}
     let dimmedAlpha:CGFloat = 0.3
 
     var marker: Marker?
     {
         didSet
         {
-            updateDisplay()
+            updateUI()
         }
     }
 
@@ -32,39 +31,29 @@ class BoardSpaceView: UIView
         self.layer.masksToBounds = true
         self.tapGesture = UITapGestureRecognizer(target: self, action: "didTapView")
         self.addGestureRecognizer(tapGesture)
-        self.marker = nil
         self.backgroundColor = backColor
+        self.marker = nil
     }
 
-    func updateDisplay()
+    func updateUI()
     {
         alpha = 1.0
-        if game != nil
+        
+        if delegate.isGameOver
         {
-            if game!.state == .Winner
-            {
-                alpha = (game!.winningBoard[tag]) ? 1.0 : dimmedAlpha
-            }
-            if game!.state == .Tie
-            {
-                alpha = dimmedAlpha
-            }
+            alpha = ( delegate.isWinningSpace(tag) ) ? 1.0 : dimmedAlpha
         }
+        
         backgroundColor = (marker == nil) ? backColor : UIColor.clearColor()
         setNeedsDisplay()
     }
 
     func didTapView()
     {
-        if let theGame = game
+        tapGesture.enabled = false
+        if let marker:Marker = delegate.placeMarker(tag)
         {
-            tapGesture.enabled = false
-            let marker:Marker = theGame.marker
-            if theGame.placeMarker(self.tag)
-            {
-                self.marker = marker
-                checkForWinner()
-            }
+            self.marker = marker
         }
     }
 
@@ -99,6 +88,19 @@ class BoardSpaceView: UIView
         UIView.animateWithDuration(0.5, delay: delay, options: nil, animations: { () -> Void in
             self.alpha = 1.0
             }, completion: nil)
+    }
+    
+    func reset()
+    {
+        alpha = 0.0
+        tapGesture.enabled = true
+        marker = nil
+    }
+    
+    func setGameOver()
+    {
+        tapGesture.enabled = false
+        updateUI()
     }
 
 }

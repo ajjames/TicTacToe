@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -11,7 +11,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="drt-2l-FEg">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <rect key="frame" x="-50" y="-50" width="700" height="700"/>
                 </imageView>
                 <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ugH-kF-7Gf">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -26,12 +26,12 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <vibrancyEffect>
-                                    <blurEffect style="light"/>
+                                    <blurEffect style="dark"/>
                                 </vibrancyEffect>
                             </visualEffectView>
                         </subviews>
                     </view>
-                    <blurEffect style="light"/>
+                    <blurEffect style="dark"/>
                 </visualEffectView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -39,15 +39,15 @@
                 <constraint firstAttribute="centerX" secondItem="drt-2l-FEg" secondAttribute="centerX" id="04k-Lo-Eas"/>
                 <constraint firstItem="ugH-kF-7Gf" firstAttribute="width" secondItem="X85-Xq-Dge" secondAttribute="width" id="30F-Pd-Lg3"/>
                 <constraint firstAttribute="centerY" secondItem="drt-2l-FEg" secondAttribute="centerY" id="NAy-gp-JiW"/>
-                <constraint firstItem="drt-2l-FEg" firstAttribute="height" secondItem="X85-Xq-Dge" secondAttribute="height" id="Qjz-8T-JRh"/>
+                <constraint firstItem="drt-2l-FEg" firstAttribute="height" secondItem="X85-Xq-Dge" secondAttribute="height" constant="100" id="Qjz-8T-JRh"/>
                 <constraint firstAttribute="centerY" secondItem="ugH-kF-7Gf" secondAttribute="centerY" id="ZfO-eY-eGp"/>
                 <constraint firstAttribute="centerX" secondItem="ugH-kF-7Gf" secondAttribute="centerX" id="b1C-m4-b8V"/>
                 <constraint firstItem="ugH-kF-7Gf" firstAttribute="height" secondItem="X85-Xq-Dge" secondAttribute="height" id="eF1-hO-yT8"/>
-                <constraint firstItem="drt-2l-FEg" firstAttribute="width" secondItem="X85-Xq-Dge" secondAttribute="width" id="zrQ-Ei-2Av"/>
+                <constraint firstItem="drt-2l-FEg" firstAttribute="width" secondItem="X85-Xq-Dge" secondAttribute="width" constant="100" id="zrQ-Ei-2Av"/>
             </constraints>
         </view>
     </objects>
     <resources>
-        <image name="background" width="1936" height="2592"/>
+        <image name="background" width="2304" height="3456"/>
     </resources>
 </document>

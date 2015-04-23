@@ -8,25 +8,44 @@
 
 import UIKit
 
-class GameViewController: UIViewController
+class GameViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, BoardSpaceViewDelegate
 {
+    //MARK: properties
+
     var game: TicTacToeGame!
     @IBOutlet var spaces: [BoardSpaceView]!
-    @IBOutlet var topResetView: UIView!
-    @IBOutlet var bottomResetView: UIView!
     @IBOutlet var backgroundImageView: UIImageView!
+    @IBOutlet var whiteSelectionView: UIView!
+    @IBOutlet var photoSelectView: UIView!
+    @IBOutlet var defautBackgroundButtonImage: UIImageView!
+    @IBOutlet var cameraButton: UIButton!
+    @IBOutlet var cameraButtonWidthConstraint: NSLayoutConstraint!
+    @IBOutlet var cameraButtonLeadingConstraint: NSLayoutConstraint!
+
+    lazy var customImagePath: String = { ()->String in
+        let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+        let documentsDirectory: String = paths[0] as! String
+        let path = documentsDirectory.stringByAppendingPathComponent("custombackground.jpg")
+        return path
+        }()
+
+    //MARK: view controller
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        backgroundImageView.addBackgroundParallax(100.0)
+        setupBackgroundImageFeatures()
+        loadBackgroundImage()
+        setupBoard()
     }
 
     override func viewWillAppear(animated: Bool)
     {
         super.viewWillAppear(animated)
-        clearBoard()
-        startNewGame()
+        if game == nil
+        {
+            startNewGame()
+        }
     }
 
     override func prefersStatusBarHidden() -> Bool
@@ -34,56 +53,28 @@ class GameViewController: UIViewController
         return true
     }
 
-    func clearBoard()
+    //MARK: private
+    
+    private func setupBoard()
     {
-        topResetView.hidden = true
-        bottomResetView.hidden = true
         for space in spaces
         {
-            space.game = nil
-            space.alpha = 0.0
-            space.marker = nil
-            space.checkForWinner = self.checkForWinner
-            space.updateDisplay()
+            space.delegate = self
         }
-        view.window?.tintColor = UIColor.blueColor()
     }
 
-    func startNewGame()
+    private func startNewGame()
     {
+        view.window?.tintColor = UIColor.blueColor()
         game = TicTacToeGame()
         for space in spaces
         {
-            space.alpha = 0.0
-            space.game = game
-            space.tapGesture.enabled = true
+            space.reset()
         }
         animateNewBoard()
     }
 
-    func checkForWinner()
-    {
-        if game.state == GameState.Winner
-        {
-            for space in spaces
-            {
-                space.updateDisplay()
-            }
-        }
-        if game.state != GameState.InProgress
-        {
-            topResetView.hidden = false
-            bottomResetView.hidden = false
-        }
-    }
-
-    @IBAction func didTouchRestartButton(sender: UIButton)
-    {
-        clearBoard()
-        startNewGame()
-    }
-
-    func animateNewBoard()
+    private func animateNewBoard()
     {
         let index = Int(arc4random_uniform(UInt32(Animations.count)))
         var delayIncrement:NSTimeInterval = 0.1
@@ -91,7 +82,7 @@ class GameViewController: UIViewController
         animateSpaces(animation.animations, animation.delayIncrement)
     }
 
-    func animateSpaces(animationArray:[[Int]], _ delayIncrement:NSTimeInterval)
+    private func animateSpaces(animationArray:[[Int]], _ delayIncrement:NSTimeInterval)
     {
         for array in animationArray
         {
@@ -105,6 +96,169 @@ class GameViewController: UIViewController
                 delay += delayIncrement
             }
         }
+    }
+    
+    private func setGameOverBoard()
+    {
+        for space in spaces
+        {
+            space.setGameOver()
+        }
+    }
+
+    //MARK: BoardSpaceViewDelegate
+    
+    
+    var isGameOver: Bool
+    {
+        get
+        {
+            return game.state != .InProgress
+        }
+    }
+    
+    
+    func isWinningSpace(index: Int) -> Bool
+    {
+        return game.winningBoard[index]
+    }
+    
+    func placeMarker(index:Int) -> Marker?
+    {
+        var nextMarker:Marker? = game.marker
+        if !game.placeMarker(index)
+        {
+            nextMarker = nil
+        }
+        
+        if isGameOver
+        {
+            setGameOverBoard()
+        }
+        
+        return nextMarker
+    }
+    
+    //MARK: Background Image Features
+    
+    private func setupBackgroundImageFeatures()
+    {
+        photoSelectView.alpha = 0
+        whiteSelectionView.layer.cornerRadius = 10
+        whiteSelectionView.layer.shadowColor = UIColor.blackColor().CGColor
+        whiteSelectionView.layer.shadowOffset = CGSize(width: -2, height: -2)
+        whiteSelectionView.layer.shadowRadius = 5
+        defautBackgroundButtonImage.layer.cornerRadius = 5
+        backgroundImageView.addBackgroundParallax(50.0)
+    }
+    
+    private func saveImage(image:UIImage)
+    {
+        let data = UIImageJPEGRepresentation(image, 1.0)
+        data.writeToFile(customImagePath, atomically: true)
+    }
+    
+    private func loadBackgroundImage()
+    {
+        if let image = UIImage(contentsOfFile: customImagePath)
+        {
+            backgroundImageView.image = image
+        }
+    }
+    
+    private func hideCameraButton()
+    {
+        cameraButtonWidthConstraint.constant = 0.0
+        cameraButtonLeadingConstraint.constant = 0.0
+        cameraButton.hidden = true
+        photoSelectView.setNeedsUpdateConstraints()
+    }
+
+    private func showCameraButton()
+    {
+        cameraButtonWidthConstraint.constant = 60.0
+        cameraButtonLeadingConstraint.constant = 8.0
+        cameraButton.hidden = false
+        photoSelectView.setNeedsUpdateConstraints()
+    }
+
+    //MARK: IB
+
+    @IBAction func didTapBackground(sender: UITapGestureRecognizer)
+    {
+        if game.state != .InProgress
+        {
+            startNewGame()
+        }
+    }
+
+    @IBAction func didTwoTouch(sender: UITapGestureRecognizer)
+    {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+            showCameraButton()
+        } else {
+            hideCameraButton()
+        }
+
+        photoSelectView.alpha = 0
+        photoSelectView.transform = CGAffineTransformMakeScale(0.25, 0.25)
+
+        UIView.animateWithDuration(0.7, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+            self.photoSelectView.alpha = 1.0
+            self.photoSelectView.transform = CGAffineTransformMakeScale(1.0, 1.0)
+        }, completion: nil)
+    }
+
+    @IBAction func didTapDismiss(sender: AnyObject)
+    {
+        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+            self.photoSelectView.alpha = 0.0
+            self.photoSelectView.transform = CGAffineTransformMakeScale(0.25, 0.25)
+            }, completion: nil)
+    }
+
+    @IBAction func didTapPhoto(sender: UIButton)
+    {
+        var picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        self.presentViewController(picker, animated: true) { () -> Void in
+        }
+        didTapDismiss(self)
+    }
+
+    @IBAction func didTapDefaultBackroundImage(sender: UIButton)
+    {
+        backgroundImageView.image = UIImage(named: "background")
+        didTapDismiss(self)
+    }
+
+    @IBAction func didTapCamera(sender: UIButton)
+    {
+        var picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = UIImagePickerControllerSourceType.Camera
+        picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureMode.Photo
+        self.presentViewController(picker, animated: true) { () -> Void in
+        }
+        didTapDismiss(self)
+    }
+
+    //MARK: UIImagePickerControllerDelegate
+
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject])
+    {
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        {
+            backgroundImageView.image = image
+            saveImage(image)
+        }
+    }
+
+    func imagePickerControllerDidCancel(picker: UIImagePickerController)
+    {
+        picker.dismissViewControllerAnimated(true, completion: nil)
     }
 
 }
