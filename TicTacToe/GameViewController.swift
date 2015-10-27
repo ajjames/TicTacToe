@@ -23,9 +23,9 @@ class GameViewController: UIViewController, UINavigationControllerDelegate, UIIm
     @IBOutlet var cameraButtonLeadingConstraint: NSLayoutConstraint!
 
     lazy var customImagePath: String = { ()->String in
-        let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
-        let documentsDirectory: String = paths[0] as! String
-        let path = documentsDirectory.stringByAppendingPathComponent("custombackground.jpg")
+        
+        let documentsDirectoryURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+        let path = documentsDirectoryURL.URLByAppendingPathComponent("custombackground.jpg").path!
         return path
         }()
 
@@ -77,7 +77,6 @@ class GameViewController: UIViewController, UINavigationControllerDelegate, UIIm
     private func animateNewBoard()
     {
         let index = Int(arc4random_uniform(UInt32(Animations.count)))
-        var delayIncrement:NSTimeInterval = 0.1
         let animation = Animations[index]
         animateSpaces(animation.animations, animation.delayIncrement)
     }
@@ -89,8 +88,8 @@ class GameViewController: UIViewController, UINavigationControllerDelegate, UIIm
             var delay = NSTimeInterval(0.2)
             for index in array
             {
-                var space = spaces[index]
-                UIView.animateWithDuration(0.5, delay: delay, options: nil, animations: { () -> Void in
+                let space = spaces[index]
+                UIView.animateWithDuration(0.5, delay: delay, options:.CurveLinear, animations: { () -> Void in
                     space.alpha = 1.0
                     }, completion: nil)
                 delay += delayIncrement
@@ -154,7 +153,7 @@ class GameViewController: UIViewController, UINavigationControllerDelegate, UIIm
     
     private func saveImage(image:UIImage)
     {
-        let data = UIImageJPEGRepresentation(image, 1.0)
+        let data = UIImageJPEGRepresentation(image, 1.0)!
         data.writeToFile(customImagePath, atomically: true)
     }
     
@@ -219,7 +218,7 @@ class GameViewController: UIViewController, UINavigationControllerDelegate, UIIm
 
     @IBAction func didTapPhoto(sender: UIButton)
     {
-        var picker = UIImagePickerController()
+        let picker = UIImagePickerController()
         picker.delegate = self
         picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         self.presentViewController(picker, animated: true) { () -> Void in
@@ -235,7 +234,7 @@ class GameViewController: UIViewController, UINavigationControllerDelegate, UIIm
 
     @IBAction func didTapCamera(sender: UIButton)
     {
-        var picker = UIImagePickerController()
+        let picker = UIImagePickerController()
         picker.delegate = self
         picker.sourceType = UIImagePickerControllerSourceType.Camera
         picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureMode.Photo
@@ -246,7 +245,7 @@ class GameViewController: UIViewController, UINavigationControllerDelegate, UIIm
 
     //MARK: UIImagePickerControllerDelegate
 
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject])
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
     {
         picker.dismissViewControllerAnimated(true, completion: nil)
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage

@@ -26,7 +26,7 @@ class BoardSpaceView: UIView
 
     required init(coder aDecoder: NSCoder)
     {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
         self.layer.cornerRadius = 10
         self.layer.masksToBounds = true
         self.tapGesture = UITapGestureRecognizer(target: self, action: "didTapView")
@@ -61,7 +61,7 @@ class BoardSpaceView: UIView
     {
         if marker == Marker.X
         {
-            var context = UIGraphicsGetCurrentContext()
+            let context = UIGraphicsGetCurrentContext()
             CGContextSetLineWidth(context, 5.0)
             markerColor.set()
 
@@ -75,7 +75,7 @@ class BoardSpaceView: UIView
         }
         if self.marker == Marker.O
         {
-            var context = UIGraphicsGetCurrentContext()
+            let context = UIGraphicsGetCurrentContext()
             CGContextSetLineWidth(context, 5.0)
             markerColor.set()
             CGContextAddArc(context, (frame.size.width)/2, frame.size.height/2, (frame.size.width - 10)/2, 0.0, CGFloat(M_PI * 2.0), 1)
@@ -85,7 +85,7 @@ class BoardSpaceView: UIView
 
     func fadeIn(delay:NSTimeInterval)
     {
-        UIView.animateWithDuration(0.5, delay: delay, options: nil, animations: { () -> Void in
+        UIView.animateWithDuration(0.5, delay: delay, options:.CurveLinear, animations: { () -> Void in
             self.alpha = 1.0
             }, completion: nil)
     }

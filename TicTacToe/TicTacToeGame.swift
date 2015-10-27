@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-@objc public class TicTacToeGame: Printable
+public class TicTacToeGame: CustomStringConvertible
 {
     // Each spot on the board has 
     // one of the possible values: 
