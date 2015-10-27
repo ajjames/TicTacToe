@@ -25,7 +25,7 @@ public extension UIView
 
     public func removeParallax()
     {
-        if let effects: [UIMotionEffect] = self.motionEffects as? [UIMotionEffect]
+        if let effects: [UIMotionEffect] = self.motionEffects
         {
             for effect:UIMotionEffect in effects
             {
@@ -38,15 +38,15 @@ public extension UIView
     {
         removeParallax()
 
-        var verticalMotionEffect:UIInterpolatingMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: UIInterpolatingMotionEffectType.TiltAlongVerticalAxis)
+        let verticalMotionEffect:UIInterpolatingMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: UIInterpolatingMotionEffectType.TiltAlongVerticalAxis)
         verticalMotionEffect.minimumRelativeValue = -amount
         verticalMotionEffect.maximumRelativeValue = amount
 
-        var horizontalMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: UIInterpolatingMotionEffectType.TiltAlongHorizontalAxis)
+        let horizontalMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: UIInterpolatingMotionEffectType.TiltAlongHorizontalAxis)
         horizontalMotionEffect.minimumRelativeValue = -amount
         horizontalMotionEffect.maximumRelativeValue = amount
 
-        var group = UIMotionEffectGroup()
+        let group = UIMotionEffectGroup()
         group.motionEffects = [horizontalMotionEffect, verticalMotionEffect]
         self.addMotionEffect(group)
     }

@@ -15,7 +15,7 @@ class BoardTests: XCTestCase
 
     func testNewBoard()
     {
-        var game = TicTacToeGame()
+        let game = TicTacToeGame()
 
         let result = game.description
         let expected = "         "
@@ -27,7 +27,7 @@ class BoardTests: XCTestCase
 
     func testBoardMovement()
     {
-        var game = TicTacToeGame()
+        let game = TicTacToeGame()
 
         XCTAssertTrue(game.placeMarker(Space(.Top, .Left)))
         XCTAssertEqual(game.description, "X        ")
