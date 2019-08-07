@@ -9,9 +9,8 @@
 import Foundation
 
 
-protocol BoardSpaceViewDelegate : class
-{
+protocol BoardSpaceViewDelegate : class {
     var isGameOver: Bool {get}
-    func isWinningSpace(index:Int) -> Bool
-    func placeMarker(index:Int) -> Marker?
+    func isWinningSpace(index: Int) -> Bool
+    func placeMarker(index: Int) -> Marker?
 }

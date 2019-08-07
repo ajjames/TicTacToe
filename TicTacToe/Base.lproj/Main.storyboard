@@ -1,17 +1,20 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="SbK-KQ-wYp">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SbK-KQ-wYp">
+    <device id="retina6_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Entypo.otf">
+        <array key="Entypo.otf">
             <string>Entypo</string>
-        </mutableArray>
-        <mutableArray key="WebSymbols-Regular.otf">
+        </array>
+        <array key="WebSymbols-Regular.otf">
             <string>WebSymbols-Regular</string>
-            <string>WebSymbols-Regular</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <scenes>
         <!--Game View Controller-->
@@ -23,68 +26,68 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="WME-Uj-vv3">
-                                <rect key="frame" x="-50" y="-50" width="420" height="580"/>
+                                <rect key="frame" x="-50" y="-50" width="514" height="996"/>
                             </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pwm-Uw-VwY">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="XeA-5i-Rev">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CL0-Ra-zf0">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="fzd-M2-nOK" userLabel="vibrancy">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Mv-e1-EO7" userLabel="board">
-                                                        <rect key="frame" x="8" y="88" width="304" height="304"/>
+                                                        <rect key="frame" x="8" y="249" width="398" height="398"/>
                                                         <subviews>
                                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2cD-ng-A40" userLabel="0" customClass="BoardSpaceView" customModule="TicTacToe" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="96" height="96"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="127.33333333333333" height="127.33333333333333"/>
+                                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="2cD-ng-A40" secondAttribute="height" multiplier="1:1" id="5MQ-m3-Zkw"/>
                                                                 </constraints>
                                                             </view>
                                                             <view clipsSubviews="YES" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ei-Qj-YEh" userLabel="1" customClass="BoardSpaceView" customModule="TicTacToe" customModuleProvider="target">
-                                                                <rect key="frame" x="104" y="0.0" width="96" height="96"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <rect key="frame" x="135.33333333333334" y="0.0" width="127.33333333333334" height="127.33333333333333"/>
+                                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </view>
                                                             <view clipsSubviews="YES" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nAr-Qm-aUG" userLabel="2" customClass="BoardSpaceView" customModule="TicTacToe" customModuleProvider="target">
-                                                                <rect key="frame" x="208" y="0.0" width="96" height="96"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <rect key="frame" x="270.66666666666669" y="0.0" width="127.33333333333331" height="127.33333333333333"/>
+                                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </view>
                                                             <view clipsSubviews="YES" tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Je8-ss-hd8" userLabel="3" customClass="BoardSpaceView" customModule="TicTacToe" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="104" width="96" height="96"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <rect key="frame" x="0.0" y="135.33333333333331" width="127.33333333333333" height="127.33333333333331"/>
+                                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </view>
                                                             <view clipsSubviews="YES" tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D6M-bk-uCd" userLabel="4" customClass="BoardSpaceView" customModule="TicTacToe" customModuleProvider="target">
-                                                                <rect key="frame" x="104" y="104" width="96" height="96"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <rect key="frame" x="135.33333333333334" y="135.33333333333331" width="127.33333333333334" height="127.33333333333331"/>
+                                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </view>
                                                             <view clipsSubviews="YES" tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tLp-7s-81q" userLabel="5" customClass="BoardSpaceView" customModule="TicTacToe" customModuleProvider="target">
-                                                                <rect key="frame" x="208" y="104" width="96" height="96"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <rect key="frame" x="270.66666666666669" y="135.33333333333331" width="127.33333333333331" height="127.33333333333331"/>
+                                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </view>
                                                             <view clipsSubviews="YES" tag="6" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KKV-Xl-pkV" userLabel="6" customClass="BoardSpaceView" customModule="TicTacToe" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="208" width="96" height="96"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <rect key="frame" x="0.0" y="270.66666666666663" width="127.33333333333333" height="127.33333333333331"/>
+                                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </view>
                                                             <view clipsSubviews="YES" tag="7" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X2z-80-30t" userLabel="7" customClass="BoardSpaceView" customModule="TicTacToe" customModuleProvider="target">
-                                                                <rect key="frame" x="104" y="208" width="96" height="96"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <rect key="frame" x="135.33333333333334" y="270.66666666666663" width="127.33333333333334" height="127.33333333333331"/>
+                                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </view>
                                                             <view clipsSubviews="YES" tag="8" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kcD-Ob-sB4" userLabel="8" customClass="BoardSpaceView" customModule="TicTacToe" customModuleProvider="target">
-                                                                <rect key="frame" x="208" y="208" width="96" height="96"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <rect key="frame" x="270.66666666666669" y="270.66666666666663" width="127.33333333333331" height="127.33333333333331"/>
+                                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstItem="kcD-Ob-sB4" firstAttribute="top" secondItem="tLp-7s-81q" secondAttribute="bottom" constant="8" id="03Q-m6-dS7"/>
                                                             <constraint firstItem="8ei-Qj-YEh" firstAttribute="leading" secondItem="2cD-ng-A40" secondAttribute="trailing" constant="8" id="0XY-zK-hdR"/>
@@ -141,7 +144,7 @@
                                                         </variation>
                                                     </view>
                                                 </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="centerY" secondItem="1Mv-e1-EO7" secondAttribute="centerY" id="6PA-jk-Wb8"/>
@@ -157,10 +160,10 @@
                                             </vibrancyEffect>
                                         </visualEffectView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nEu-Rw-VKB" userLabel="photoSelectView">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SKb-CY-kkx" userLabel="white background">
-                                                    <rect key="frame" x="42" y="190" width="236" height="100"/>
+                                                    <rect key="frame" x="89" y="398" width="236" height="100"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="6Tl-vp-Mqa">
                                                             <rect key="frame" x="88" y="20" width="60" height="60"/>
@@ -177,7 +180,7 @@
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="WebSymbols-Regular" family="Web Symbols" pointSize="40"/>
                                                             <state key="normal">
-                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </state>
                                                             <connections>
                                                                 <action selector="didTapDefaultBackroundImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kLi-0N-feP"/>
@@ -191,7 +194,7 @@
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="WebSymbols-Regular" family="Web Symbols" pointSize="40"/>
                                                             <state key="normal" title="I">
-                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </state>
                                                             <connections>
                                                                 <action selector="didTapPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="q8I-gU-bXO"/>
@@ -205,14 +208,14 @@
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Entypo" family="Entypo" pointSize="102"/>
                                                             <state key="normal" title="D">
-                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </state>
                                                             <connections>
                                                                 <action selector="didTapCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="adj-vK-qog"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="6Tl-vp-Mqa" firstAttribute="centerX" secondItem="eeI-5U-kdV" secondAttribute="centerX" id="4jk-Fw-FYM"/>
                                                         <constraint firstAttribute="bottom" secondItem="cjf-QV-H64" secondAttribute="bottom" constant="20" id="D36-SL-DZD"/>
@@ -229,7 +232,7 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstAttribute="centerY" secondItem="SKb-CY-kkx" secondAttribute="centerY" id="Iba-Y7-KvA"/>
@@ -252,7 +255,7 @@
                                 <blurEffect style="dark"/>
                             </visualEffectView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="pwm-Uw-VwY" secondAttribute="centerY" id="1tn-8Y-tqL"/>
                             <constraint firstItem="1Mv-e1-EO7" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" priority="750" constant="-16" id="2bZ-Zr-31T"/>
@@ -293,7 +296,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="rI3-Ad-d3I"/>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="WME-Uj-vv3" id="GH1-DQ-5aa"/>
                         <outlet property="cameraButton" destination="cjf-QV-H64" id="t9s-m8-SPx"/>
@@ -330,16 +332,14 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1140" y="8"/>
+            <point key="canvasLocation" x="1422" y="8"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="b4t-Y2-twT">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="SbK-KQ-wYp" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ymb-IQ-6Jy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

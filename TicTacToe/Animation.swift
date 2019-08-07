@@ -8,10 +8,9 @@
 
 import Foundation
 
-struct Animation
-{
+struct Animation {
     var animations: [[Int]]
-    var delayIncrement: NSTimeInterval
+    var delayIncrement: TimeInterval
 }
 
 // 0 1 2

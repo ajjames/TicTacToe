@@ -13,13 +13,13 @@ public class TicTacToeGame: CustomStringConvertible
 {
     // Each spot on the board has 
     // one of the possible values: 
-    //      .X   .O   nil
+    //      .x   .o   nil
     public var board: [Marker?]
     // 0 1 2
     // 3 4 5
     // 6 7 8
-    public var marker = Marker.X  // X always go first!
-    public var state = GameState.InProgress
+    public var marker = Marker.x  // X always go first!
+    public var state = GameState.inProgress
     public var winner: Marker?
     public var winningBoard: [Bool]!
     public let lines = [
@@ -32,25 +32,30 @@ public class TicTacToeGame: CustomStringConvertible
         [0,4,8], // diagonal: \
         [6,4,2]] // diagonal: /
 
-    public init()
-    {
-        board = [nil,nil,nil, nil,nil,nil, nil,nil,nil]
+    public var description: String {
+        var boardDescription = ""
+        for space in board {
+            boardDescription += space?.rawValue ?? " "
+        }
+        return boardDescription
     }
     
-    public func placeMarker(space:Space) -> Bool
-    {
+    public init() {
+        board = [nil, nil, nil,
+                 nil, nil, nil,
+                 nil, nil, nil]
+    }
+    
+    public func placeMarker(onSpace space: Space) -> Bool {
         let index = Int(space.column.rawValue + (space.row.rawValue * 3))
-        return placeMarker(index)
+        return placeMarker(atIndex: index)
     }
 
-    public func placeMarker(index:Int) -> Bool
-    {
-        if index < 0 || index > 8
-        {
+    public func placeMarker(atIndex index: Int) -> Bool {
+        if index < 0 || index > 8 {
             return false
         }
-        if board[index] == nil && state == .InProgress
-        {
+        if board[index] == nil && state == .inProgress {
             board[index] = marker
             checkForWinner()
             nextTurn()
@@ -59,56 +64,38 @@ public class TicTacToeGame: CustomStringConvertible
         return false
     }
 
-    private func checkForWinner()
-    {
-        winningBoard = [false,false,false, false,false,false, false,false,false]
+    private func checkForWinner() {
+        winningBoard = [false, false, false,
+                        false, false, false,
+                        false, false, false]
         var foundANilSpace = false
-        for line in lines
-        {
+        for line in lines {
             let indexOfA = line[0]
             let indexOfB = line[1]
             let indexOfC = line[2]
             let markerA = board[indexOfA]
             let markerB = board[indexOfB]
             let markerC = board[indexOfC]
-            if markerA != nil && markerB != nil && markerC != nil
-            {
-                if marker == markerA! && markerA! == markerB! && markerB! == markerC!
-                {
+            if markerA != nil && markerB != nil && markerC != nil {
+                if marker == markerA! && markerA! == markerB! && markerB! == markerC! {
                     winner = marker
-                    state = GameState.Winner
+                    state = GameState.winner
                     winningBoard[indexOfA] = true
                     winningBoard[indexOfB] = true
                     winningBoard[indexOfC] = true
                 }
-            }
-            else
-            {
+            } else {
                 foundANilSpace = true
             }
         }
-        if !foundANilSpace && state != .Winner
-        {
-            state = .Tie
+        if !foundANilSpace && state != .winner {
+            state = .tie
         }
     }
 
-    private func nextTurn()
-    {
-        if winner == nil
-        {
-            marker = (marker == .X) ? .O : .X
+    private func nextTurn() {
+        if winner == nil {
+            marker = (marker == .x) ? .o : .x
         }
     }
-
-    public var description: String
-    {
-        var boardDescription = ""
-        for space in board
-        {
-            boardDescription += space?.rawValue ?? " "
-        }
-        return boardDescription
-    }
-
 }

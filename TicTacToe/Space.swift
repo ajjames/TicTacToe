@@ -8,13 +8,12 @@
 
 import Foundation
 
-public struct Space
-{
+public struct Space {
+    
     var row: Row
     var column: Column
 
-    public init(_ row:Row, _ column:Column)
-    {
+    public init(_ row: Row, _ column: Column) {
         self.row = row
         self.column = column
     }

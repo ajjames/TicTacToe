@@ -9,40 +9,32 @@
 import Foundation
 import UIKit
 
-public extension UIView
-{
-    public func addBackgroundParallax(strength:CGFloat)
-    {
+public extension UIView {
+    
+    func addBackgroundParallax(_ strength: CGFloat) {
         addParallax(-strength)
     }
 
 
-    public func addForegroundParallax(strength:CGFloat)
-    {
+    func addForegroundParallax(_ strength: CGFloat) {
         addParallax(strength)
     }
 
 
-    public func removeParallax()
-    {
-        if let effects: [UIMotionEffect] = self.motionEffects
-        {
-            for effect:UIMotionEffect in effects
-            {
-                removeMotionEffect(effect)
-            }
+    func removeParallax() {
+        for effect:UIMotionEffect in motionEffects {
+            removeMotionEffect(effect)
         }
     }
 
-    public func addParallax(amount:CGFloat)
-    {
+    func addParallax(_ amount: CGFloat) {
         removeParallax()
 
-        let verticalMotionEffect:UIInterpolatingMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: UIInterpolatingMotionEffectType.TiltAlongVerticalAxis)
+        let verticalMotionEffect:UIInterpolatingMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: .tiltAlongVerticalAxis)
         verticalMotionEffect.minimumRelativeValue = -amount
         verticalMotionEffect.maximumRelativeValue = amount
 
-        let horizontalMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: UIInterpolatingMotionEffectType.TiltAlongHorizontalAxis)
+        let horizontalMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
         horizontalMotionEffect.minimumRelativeValue = -amount
         horizontalMotionEffect.maximumRelativeValue = amount
 

@@ -13,50 +13,50 @@ import TicTacToe
 class BoardTests: XCTestCase
 {
 
-    func testNewBoard()
+    func test_NewBoard()
     {
         let game = TicTacToeGame()
 
         let result = game.description
         let expected = "         "
         XCTAssertEqual(result, expected)
-        XCTAssertEqual(game.marker, Marker.X)
-        XCTAssertEqual(game.state, GameState.InProgress)
+        XCTAssertEqual(game.marker, .x)
+        XCTAssertEqual(game.state, .inProgress)
         XCTAssertTrue(game.winner == nil)
     }
 
-    func testBoardMovement()
+    func test_BoardMovement()
     {
         let game = TicTacToeGame()
 
-        XCTAssertTrue(game.placeMarker(Space(.Top, .Left)))
+        XCTAssertTrue(game.placeMarker(onSpace: Space(.top, .left)))
         XCTAssertEqual(game.description, "X        ")
-        XCTAssertTrue(game.marker == Marker.O)
+        XCTAssertTrue(game.marker == .o)
 
-        XCTAssertTrue(game.placeMarker(Space(.Middle, .Middle)))
+        XCTAssertTrue(game.placeMarker(onSpace: Space(.middle, .middle)))
         XCTAssertEqual(game.description, "X   O    ")
-        XCTAssertTrue(game.marker == Marker.X)
+        XCTAssertTrue(game.marker == .x)
 
         //should not be able to move to the same space
-        XCTAssertFalse(game.placeMarker(Space(.Middle, .Middle)))
+        XCTAssertFalse(game.placeMarker(onSpace: Space(.middle, .middle)))
         XCTAssertEqual(game.description, "X   O    ")
-        XCTAssertTrue(game.marker == Marker.X)
+        XCTAssertTrue(game.marker == .x)
 
-        XCTAssertTrue(game.placeMarker(Space(.Middle, .Left)))
+        XCTAssertTrue(game.placeMarker(onSpace: Space(.middle, .left)))
         XCTAssertEqual(game.description, "X  XO    ")
-        XCTAssertTrue(game.marker == Marker.O)
+        XCTAssertTrue(game.marker == .o)
 
-        XCTAssertTrue(game.placeMarker(Space(.Middle, .Right)))
+        XCTAssertTrue(game.placeMarker(onSpace: Space(.middle, .right)))
         XCTAssertEqual(game.description, "X  XOO   ")
-        XCTAssertTrue(game.marker == Marker.X)
-        XCTAssertEqual(game.state, GameState.InProgress)
+        XCTAssertTrue(game.marker == .x)
+        XCTAssertEqual(game.state, GameState.inProgress)
         XCTAssertTrue(game.winner == nil)
 
-        XCTAssertTrue(game.placeMarker(Space(.Bottom, .Left)))
+        XCTAssertTrue(game.placeMarker(onSpace: Space(.bottom, .left)))
         XCTAssertEqual(game.description, "X  XOOX  ")
-        XCTAssertTrue(game.marker == Marker.X)
-        XCTAssertTrue(game.state == GameState.Winner)
-        XCTAssertTrue(game.winner == Marker.X)
+        XCTAssertTrue(game.marker == .x)
+        XCTAssertTrue(game.state == .winner)
+        XCTAssertTrue(game.winner == .x)
     }
 
 }

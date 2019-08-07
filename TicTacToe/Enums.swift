@@ -8,22 +8,25 @@
 
 import Foundation
 
-public enum Row: Int
-{
-    case Top = 0, Middle = 1, Bottom = 2
+public enum Row: Int {
+    case top = 0
+    case middle = 1
+    case bottom = 2
 }
 
-public enum Column: Int
-{
-    case Left = 0, Middle = 1, Right = 2
+public enum Column: Int {
+    case left = 0
+    case middle = 1
+    case right = 2
 }
 
-public enum Marker: String
-{
-    case X = "X", O = "O"
+public enum Marker: String {
+    case x = "X"
+    case o = "O"
 }
 
-public enum GameState
-{
-    case InProgress, Tie, Winner
+public enum GameState {
+    case inProgress
+    case tie
+    case winner
 }
